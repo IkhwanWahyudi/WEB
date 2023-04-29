@@ -15,12 +15,13 @@ if(!$conn){
 function queryDocument($query) {
     global $conn;
     $result = mysqli_query($conn, $query);
-    $document = [];
+    $feedback = [];
 
     while ($row = mysqli_fetch_assoc($result)) {
-        $document[] = $row;
+        $feedback[] = $row;
     }
-    return $document;
+
+    return $feedback;
 }
 
 function cariDocument($keyword) {
