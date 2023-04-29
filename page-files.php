@@ -1,15 +1,14 @@
 <?php
 require 'koneksi.php';
-$result = mysqli_query($conn,"SELECT * FROM dokumen");
-$feedback = [];
-while($row = mysqli_fetch_assoc($result)){
-    $feedback[] = $row;
-}
 
 if (isset($_POST['cari'])) {
-    $document = cariDocument($_POST["keyword"]);
+    $feedback = cariDocument($_POST["keyword"]);
 } else {
-    $document = queryDocument("SELECT * FROM dokumen");
+    $result = mysqli_query($conn,"SELECT * FROM dokumen");
+    $feedback = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $feedback[] = $row;
+    }
 }
 
 ?>
@@ -176,8 +175,8 @@ if (isset($_POST['cari'])) {
                                     <div class="iq-search-bar iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownSearch">
                                         <form action="#" class="searchbox p-2">
                                             <div class="form-group mb-0 position-relative">
-                                                <input type="text" class="text search-input font-size-12" placeholder="Cari file...">
-                                                <button type="submit" name="cari" class="searchButton"><i class='bx bx-search'></i></button>
+                                                <input type="text" class="text search-input font-size-12" name="keyword" placeholder="Cari file...">
+                                                <button type="submit" name="cari" class="searchButton">Cari</button>
                                                 <a href="#" class="search-link"><i class="las la-search"></i></a>
                                             </div>
                                         </form>
@@ -336,5 +335,3 @@ if (isset($_POST['cari'])) {
 </body>
 
 </html>
-
-
