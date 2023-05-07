@@ -12,10 +12,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
 
     if (isset($_POST['ubah'])) {
         $id = $user['id_akun'];
-    
+        
         $hasil = mysqli_query($conn, "SELECT * FROM dokumen WHERE id_akun = '$id'");
         $row = mysqli_fetch_array($hasil);
         
+        $id_file = $row['id'];
         $nama_lama = $row['namaDokumen'];
         $format = $row['tipeDokumen'];
 
@@ -25,8 +26,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
         $namabaru = $id . ' -$- ' . $namaDokumen . "." . $format;
 
         $query = "UPDATE dokumen SET
-                namaDokumen='$namabaru'
-                WHERE id_akun ='$id'";
+                namaDokumen ='$namabaru'
+                WHERE id = '$id_file'";
 
         if (rename("uploads/" . $nama_lama, "uploads/" . $namabaru)) {
             $result = mysqli_query($conn, $query);
