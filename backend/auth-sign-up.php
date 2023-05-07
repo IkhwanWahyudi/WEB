@@ -24,7 +24,7 @@ if (isset($_POST['register'])) {
 
             $pw_hash = password_hash($pw, PASSWORD_DEFAULT);
 
-            $query = "INSERT INTO akun (email, username, nama_lengkap, pw, image) VALUES ('$email', '$username', '$fname', '$pw_hash', '$fp')";
+            $query = "INSERT INTO akun (email, username, nama_lengkap, pw, konfirpassword, image) VALUES ('$email', '$username', '$fname', '$pw_hash', '$konfirpassword', '$fp')";
             $result = $conn->query($query);
 
             if ($result) {
@@ -184,4 +184,3 @@ if (isset($_POST['register'])) {
 </body>
 
 </html>
-
