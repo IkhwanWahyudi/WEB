@@ -1,0 +1,19 @@
+
+
+
+
+/* Ubah tampilan input file */
+.form-control-file {
+    height: auto;
+    padding: 1.5rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 0.5rem;
+}
+
+/* Ubah tampilan tombol */
+.btn {
+    border-radius: 0.5rem;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+}
+

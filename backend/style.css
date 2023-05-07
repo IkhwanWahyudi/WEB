@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 1px solid #333;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  background: #8f93f6;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #6f95f6;
+}
+
+.link {
+  text-decoration: none;
+  color: blue;
+  font-size: 16px;
+  transition: 0.5s;
+}
+.upload{
+  width: 125px;
+  position: relative;
+  margin: auto;
+}
+
+.upload img{
+  border-radius: 50%;
+  border: 8px solid #DCDCDC;
+}
+
+.upload .round{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #00B4FF;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.upload .round input[type = "file"]{
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+
+input[type=file]::-webkit-file-upload-button{
+    cursor: pointer;
+}
