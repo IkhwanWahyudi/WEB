@@ -6,6 +6,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
 
     require 'koneksi.php';
     $user = getUserById($_SESSION['id'], $conn);
+
+    // Set timeout session dalam satuan detik
+    $timeout = 120; // 2 menit
+    
+    // Atur waktu timeout
+    if (isset($_SESSION['timeout'])) {
+        $durasi = time() - (int)$_SESSION['timeout'];
+        if ($durasi > $timeout) {
+            session_destroy();
+            header('Location: auth-sign-out.php');
+        }
+    }
+    
+    // Update waktu timeout saat ada aksi user
+    $_SESSION['timeout'] = time();
 ?>
 
 <?php
