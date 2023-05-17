@@ -134,38 +134,38 @@ if (isset($_POST['register'])) {
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="text" name = "username" placeholder=" ">
+                                 <input class="floating-input form-control" type="text" name = "username" placeholder=" " required>
                                  <label>Username</label>
                               </div>
                            </div>
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="text" name = "fullname" placeholder=" ">
+                                 <input class="floating-input form-control" type="text" name = "fullname" placeholder=" " required>
                                  <label>Nama Lengkap</label>
                               </div>
                            </div>
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="email" name = "email" placeholder=" ">
+                                 <input class="floating-input form-control" type="email" name = "email" placeholder=" " required>
                                  <label>Email</label>
                               </div>
                            </div>
                            <div class="col-lg-6">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="password" name="pw" placeholder=" ">
+                                 <input class="floating-input form-control" type="password" name="pw" placeholder=" " required>
                                  <label>Password</label>
                               </div>
                            </div>
                            <div class="col-lg-6">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="password" name="konfirpassword" placeholder=" ">
+                                 <input class="floating-input form-control" type="password" name="konfirpassword" placeholder=" " required>
                                  <input type="hidden" name="fp" value="noprofil.jpg">
                                  <label>Confirm Password</label>
                               </div>
                            </div>
                            <div class="col-lg-12">
                               <div class="custom-control custom-checkbox mb-3 text-left">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                 <input type="checkbox" class="custom-control-input" id="customCheck1" required>
                                  <label class="custom-control-label" for="customCheck1">Saya setuju dengan <a href = snk.php>syarat & ketentuan penggunaan</label>
                               </div>
                            </div>
