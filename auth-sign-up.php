@@ -130,17 +130,17 @@ if (isset($_POST['register'])) {
                      <!-- <img src="../assets/images/logo-white.png" class="img-fluid rounded-normal darkmode-logo logo" alt="logo"> -->
                      <h3 class="mb-3">Sign Up</h3>
                      <p>Buat akun baru.</p>
-                     <form action="auth-sign-up.php" method="post">
+                     <form action="auth-sign-up.php" method="post" onsubmit="return validateInput()">
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="text" name = "username" placeholder=" " required>
+                                 <input class="floating-input form-control" type="text" name = "username" placeholder=" " id="input_field" required>
                                  <label>Username</label>
                               </div>
                            </div>
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="text" name = "fullname" placeholder=" " required>
+                                 <input class="floating-input form-control" type="text" name = "fullname" placeholder=" " id="input_field" required>
                                  <label>Nama Lengkap</label>
                               </div>
                            </div>
@@ -152,7 +152,7 @@ if (isset($_POST['register'])) {
                            </div>
                            <div class="col-lg-6">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="password" name="pw" placeholder=" " required>
+                                 <input class="floating-input form-control" type="password" name="pw" placeholder=" " id="input_field" required>
                                  <label>Password</label>
                               </div>
                            </div>
@@ -224,7 +224,18 @@ if (isset($_POST['register'])) {
         // Mengatur keadaan tombol berdasarkan status checkbox
         button.disabled = !checkbox.checked;
     });
-</script>
+
+    function validateInput() {
+        var inputField = document.getElementById("input_field").value.trim();
+
+        if (inputField.length === 0) {
+            alert("Input tidak valid. Harap isi dengan input yang valid.");
+            return false;
+        }
+
+        return true;
+    }
+   </script>
 
 </body>
 
