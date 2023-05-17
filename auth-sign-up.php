@@ -165,7 +165,7 @@ if (isset($_POST['register'])) {
                            </div>
                            <div class="col-lg-12">
                               <div class="custom-control custom-checkbox mb-3 text-left">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                                  <label class="custom-control-label" for="customCheck1">Saya setuju dengan <a href = snk.php>syarat & ketentuan penggunaan</label>
                               </div>
                            </div>
