@@ -134,31 +134,31 @@ if (isset($_POST['register'])) {
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="text" name = "username" placeholder=" " id="input_field" required>
+                                 <input class="floating-input form-control" type="text" name = "username" placeholder=" " id="input_field">
                                  <label>Username</label>
                               </div>
                            </div>
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="text" name = "fullname" placeholder=" " id="input_field" required>
+                                 <input class="floating-input form-control" type="text" name = "fullname" placeholder=" " id="input_field">
                                  <label>Nama Lengkap</label>
                               </div>
                            </div>
                            <div class="col-lg-12">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="email" name = "email" placeholder=" " required>
+                                 <input class="floating-input form-control" type="email" name = "email" placeholder=" ">
                                  <label>Email</label>
                               </div>
                            </div>
                            <div class="col-lg-6">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="password" name="pw" placeholder=" " id="input_field" required>
+                                 <input class="floating-input form-control" type="password" name="pw" placeholder=" " id="input_field">
                                  <label>Password</label>
                               </div>
                            </div>
                            <div class="col-lg-6">
                               <div class="floating-label form-group">
-                                 <input class="floating-input form-control" type="password" name="konfirpassword" placeholder=" " required>
+                                 <input class="floating-input form-control" type="password" name="konfirpassword" placeholder=" ">
                                  <input type="hidden" name="fp" value="noprofil.jpg">
                                  <label>Confirm Password</label>
                               </div>
