@@ -18,14 +18,16 @@ function verifikasi_email($email, $kode_otp)
       );
 
       $ch = curl_init();
-      curl_setopt_array($ch, array(
-         CURLOPT_URL => $url,
-         CURLOPT_POST => true,
-         CURLOPT_POSTFIELDS => $post,
-         CURLOPT_RETURNTRANSFER => true,
-         CURLOPT_HEADER => false,
-         CURLOPT_SSL_VERIFYPEER => false
-      )
+      curl_setopt_array(
+         $ch,
+         array(
+            CURLOPT_URL => $url,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $post,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_SSL_VERIFYPEER => false
+         )
       );
 
       $result = curl_exec($ch);
@@ -43,39 +45,45 @@ if (isset($_POST['register'])) {
    $konfirpassword = isset($_POST['konfirpassword']) ? $_POST['konfirpassword'] : '';
    $fp = isset($_POST['fp']) ? $_POST['fp'] : '';
 
-   // cek username udah digunakan atau belum
-   $sql = "SELECT * FROM akun WHERE username ='$username'";
-   $user = $conn->query($sql);
-
-   if (mysqli_num_rows($user) > 0) {
+   if (!preg_match("/^[A-Za-z]+$/", $fname)) {
       echo "<script>
-                alert('username telah digunakan, silahkan gunakan username lain')
-            </script>";
+                     alert('Nama Lengkap Tidak Valid!')
+                  </script>";
    } else {
-      $kode_otp = substr(uniqid(), 0, 6);
-      // cek konfirmasi password
-      if ($pw == $konfirpassword) {
+      // cek username udah digunakan atau belum
+      $sql = "SELECT * FROM akun WHERE username ='$username'";
+      $user = $conn->query($sql);
 
-         $pw_hash = password_hash($pw, PASSWORD_DEFAULT);
+      if (mysqli_num_rows($user) > 0) {
+         echo "<script>
+                     alert('username telah digunakan, silahkan gunakan username lain')
+                  </script>";
+      } else {
+         $kode_otp = substr(uniqid(), 0, 6);
+         // cek konfirmasi password
+         if ($pw == $konfirpassword) {
 
-         $query = "INSERT INTO akun (email, username, nama_lengkap, pw, image, kode_otp) VALUES ('$email', '$username', '$fname', '$pw_hash', '$fp', '$kode_otp')";
-         $result = $conn->query($query);
-         if ($result) {
-            verifikasi_email($email, $kode_otp);
-            echo "<script>
-                alert('Registrasi Berhasil');
-                document.location.href = 'verifikasi.php?email=" . $email . "';
-                </script>";
+            $pw_hash = password_hash($pw, PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO akun (email, username, nama_lengkap, pw, image, kode_otp) VALUES ('$email', '$username', '$fname', '$pw_hash', '$fp', '$kode_otp')";
+            $result = $conn->query($query);
+            if ($result) {
+               verifikasi_email($email, $kode_otp);
+               echo "<script>
+                     alert('Registrasi Berhasil');
+                     document.location.href = 'verifikasi.php?email=" . $email . "';
+                     </script>";
+            } else {
+               echo "<script>
+                     alert('Registrasi Gagal')
+                     document.location.href = 'auth-sign-up.php';
+                  </script>";
+            }
          } else {
             echo "<script>
-                alert('Registrasi Gagal')
-                document.location.href = 'auth-sign-up.php';
-            </script>";
+                     alert('konfirmasi password salah!')
+                  </script>";
          }
-      } else {
-         echo "<script>
-                alert('konfirmasi password salah!')
-            </script>";
       }
    }
 }
@@ -241,12 +249,6 @@ if (isset($_POST['register'])) {
          if (inputField.length === 0) {
             alert("Lengkapi data registrasi terlebih dahulu.");
             return false;
-         }
-
-         var lettersOnlyRegex = /^[A-Za-z]+$/;
-         if (!lettersOnlyRegex.test(inputField)) {
-            alert("Hanya bisa input huruf.");
-            return false; // Menghentikan submit form
          }
 
          return true;
